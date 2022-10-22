@@ -1,9 +1,10 @@
 import pandas as pd
 
-s = pd.Series()
+#Create and empty series:
+s = pd.Series(dtype='float64')
 print(s)
 
-#########################################
+#Series without index:
 import numpy as np
 import pandas as pd
 
