@@ -1,5 +1,6 @@
-# hmm
+# hmm to predict pos tags
 import nltk
+#treebank data set has pretagged words with pos 
 from nltk.corpus import treebank
 nltk.download('treebank')
 # Train data - pretagged
