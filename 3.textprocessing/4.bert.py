@@ -14,3 +14,5 @@ last_hidden_states = outputs[0]
 print(len(last_hidden_states[0]))
 # Printing 2nd word's embedding
 print(last_hidden_states[0][2]) # embedding for 'bank'
+
+print(input_ids)
