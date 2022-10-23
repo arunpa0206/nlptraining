@@ -1,5 +1,7 @@
 from nltk.stem import WordNetLemmatizer
-  
+import nltk
+nltk.download('omw-1.4')
+
 lemmatizer = WordNetLemmatizer()
   
 print("caring :", lemmatizer.lemmatize("caring"))
