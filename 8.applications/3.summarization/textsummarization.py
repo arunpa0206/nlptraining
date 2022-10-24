@@ -22,7 +22,7 @@ from sklearn.model_selection import train_test_split
 from bs4 import BeautifulSoup
 
 #read the dataset file
-df=pd.read_csv("/content/drive/MyDrive/Reviews.csv",nrows=100000)
+df=pd.read_csv("Reviews.csv",nrows=100000)
 #drop the duplicate and na values from the records
 df.drop_duplicates(subset=['Text'],inplace=True)
 df.dropna(axis=0,inplace=True)
@@ -34,7 +34,7 @@ input_texts=[]
 target_texts=[]
 input_words=[]
 target_words=[]
-contractions= pickle.load(open("/content/drive/MyDrive/contractions.pkl","rb"))['contractions']
+contractions= pickle.load(open("contractions.pkl","rb"))['contractions']
 #initialize stop words and LancasterStemmer
 stop_words=set(stopwords.words('english'))
 stemm=LancasterStemmer()
