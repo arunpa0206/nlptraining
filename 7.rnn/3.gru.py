@@ -31,6 +31,8 @@ X_test = X_test.reshape(X_test.shape + (1,))
 
 def gru_model():
     model = Sequential()
+    #50 gru units _verify
+    #
     model.add(GRU(50, input_shape = (300,1), return_sequences = True))
     model.add(GRU(1, return_sequences = False))
     model.add(Activation('sigmoid'))

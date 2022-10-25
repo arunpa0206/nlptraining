@@ -1,4 +1,3 @@
-
 import torch
 from pytorch_transformers import BertTokenizer
 from pytorch_transformers import BertModel
@@ -13,6 +12,7 @@ last_hidden_states = outputs[0]
 # Total number of word embeddings
 print(len(last_hidden_states[0]))
 # Printing 2nd word's embedding
-print(last_hidden_states[0][2]) # embedding for 'bank'
+print("'bank' in river bank" + str(last_hidden_states[0][2])) # embedding for 'bank'
+print("'bank' in power bank" + str(last_hidden_states[0][5])) # embedding for 'bank'
 
-print(input_ids)
+print("input ids : " + str(input_ids))
