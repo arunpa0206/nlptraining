@@ -16,3 +16,21 @@ print("'bank' in river bank" + str(last_hidden_states[0][2])) # embedding for 'b
 print("'bank' in power bank" + str(last_hidden_states[0][5])) # embedding for 'bank'
 
 print("input ids : " + str(input_ids))
+
+############################################################################
+# Now using PCA to reduce dimensionality to 2, for plotting the points:
+from sklearn.decomposition import PCA
+from matplotlib import pyplot
+
+
+X = last_hidden_states[0].detach().numpy()
+print(type(X))
+pca = PCA(n_components=2)
+result = pca.fit_transform(X)
+
+# create a scatter plot of the projection
+pyplot.scatter(result[:, 0], result[:, 1])
+words = ['went', 'river', 'bank', 'with', 'power', 'bank']
+for i, word in enumerate(words):
+	pyplot.annotate(word, xy=(result[i, 0], result[i, 1]))
+pyplot.show()
