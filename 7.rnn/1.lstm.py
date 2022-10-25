@@ -10,9 +10,6 @@ import os
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 #np_load_old = np.load
 
-# modify the default parameters of np.load
-#np.load = lambda *a: np_load_old(*a, allow_pickle=True)
-
 
 max_features = 20000
 # cut texts after this number of words
@@ -35,6 +32,7 @@ y_test = np.array(y_test)
 
 model = Sequential()
 model.add(Embedding(max_features, 128, input_length=maxlen))
+# reduce the 128  dimension embedding vectors to 64 dimension vector
 model.add(LSTM(64))
 model.add(Dropout(0.5))
 model.add(Dense(1, activation='sigmoid'))

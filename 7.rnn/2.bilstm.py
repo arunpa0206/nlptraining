@@ -1,5 +1,3 @@
-# bi-lstm-sentiment
-
 from __future__ import print_function
 import numpy as np
 
@@ -36,6 +34,11 @@ y_train = np.array(y_train)
 y_test = np.array(y_test)
 
 model = Sequential()
+# Embedding layer has 3 paramenters : input_dim , output_dim, input_length
+# input_dim : The size of the vocabulary in the text data.
+# output_dim : The size of the vector space in which the words will be embedded.
+# input_length : Length of input sequences, as you would define for any input layer of a keras model.
+# input_length : For ex - if all your input documents are comrised of 1000 words, then this will be 1000. 
 model.add(Embedding(max_features, 128, input_length=maxlen))
 model.add(Bidirectional(LSTM(64)))
 model.add(Dropout(0.5))
