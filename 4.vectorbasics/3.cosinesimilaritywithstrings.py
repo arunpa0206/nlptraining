@@ -1,39 +1,33 @@
-A = "I love data mining"
-B = "I hate data mining"
+from gensim.models import Word2Vec
+import numpy as np
 
-import numpy
+sen1 = ['president', 'greets', 'press', 'chicago']
+sen2 = ['obama', 'speaks', 'illinois']
+sentences = [sen1, sen2]
+model = Word2Vec(sentences, min_count=1)
 
-wordsA = A.lower().split()
-wordsB = B.lower().split()
+vec1 = np.zeros(100, dtype = 'float32')
+vec2 = np.zeros(100, dtype = 'float32')
 
-print("Sent-1   :  " + str(wordsA))
-print("Sent-2   :  " + str(wordsB))
-
-vocab = set(wordsA)
-vocab = vocab.union(set(wordsB))
-vocab = list(vocab)
-
-print("Vocab    :  " + str(vocab))
-
-
-vA = numpy.zeros(len(vocab), dtype=float)
-vB = numpy.zeros(len(vocab), dtype=float)
-
-for w in wordsA:
-    i = vocab.index(w)
-    vA[i] += 1
+for word in sen1:
+    arr = model.wv[word]
+    vec1 = np.add(vec1,arr)
     
-print("Vector-1 :  " + str(vA))
-
-for w in wordsB:
-    i = vocab.index(w)
-    vB[i] += 1
+for word in sen2:
+    arr = model.wv[word]
+    vec2 = np.add(vec2,arr)
     
-print("Vector-2 :  " + str(vB))
+# Now we find cosine-similarity between these two vectors:
+vec1 = vec1/len(sen1)
+vec2 = vec2/len(sen2)
 
+def CosineSimilarity(vA, vB):
 
-cos_sim = numpy.dot(vA, vB) / (numpy.sqrt(numpy.dot(vA,vA)) * numpy.sqrt(numpy.dot(vB,vB)))
+    print("First-vector :  " + str(vA))  
+    print("Second-vector :  " + str(vB))
+    print('-----------------------------------------------')
 
+    cos_sim = numpy.dot(vA, vB) / (numpy.sqrt(numpy.dot(vA,vA)) * numpy.sqrt(numpy.dot(vB,vB)))
+    return cos_sim
 
-
-print("\nCosine-Similarity : " + str(cos_sim))
+print(CosineSimilarity(vec1,vec2))
