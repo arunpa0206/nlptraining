@@ -22,11 +22,12 @@ print("input ids : " + str(input_ids))
 from sklearn.decomposition import PCA
 from matplotlib import pyplot
 
-
+# creates the last hidden state as a numpy matrix.
 X = last_hidden_states[0].detach().numpy()
 print(type(X))
 pca = PCA(n_components=2)
 result = pca.fit_transform(X)
+# result will be a mtrix containing (no-of-words X 2){x and y coordinates of the PCA output}
 
 # create a scatter plot of the projection
 pyplot.scatter(result[:, 0], result[:, 1])
