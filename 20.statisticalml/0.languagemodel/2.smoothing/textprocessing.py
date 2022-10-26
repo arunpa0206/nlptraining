@@ -25,22 +25,27 @@ def getRemovalList():
 removal_list = getRemovalList()
   
 # generate unigrams bigrams trigrams
-unigram=[]
-bigram=[]
-trigram=[]
-tokenized_text=[]
-for sentence in sents:
-  sentence = list(map(lambda x:x.lower(),sentence))
-  
-  for word in sentence:
-        if word== '.':
-            sentence.remove(word) 
-        else:
-            unigram.append(word)
+def get_Unigrams(sents):
+  unigram=[]
+  bigram=[]
+  trigram=[]
+  tokenized_text=[]
+  for sentence in sents:
+    sentence = list(map(lambda x:x.lower(),sentence))
     
-  tokenized_text.append(sentence)
-  bigram.extend(list(ngrams(sentence, 2,pad_left=True, pad_right=True)))
-  trigram.extend(list(ngrams(sentence, 3, pad_left=True, pad_right=True)))
+    for word in sentence:
+          if word== '.':
+              sentence.remove(word) 
+          else:
+              unigram.append(word)
+      
+    tokenized_text.append(sentence)
+    bigram.extend(list(ngrams(sentence, 2,pad_left=True, pad_right=True)))
+    trigram.extend(list(ngrams(sentence, 3, pad_left=True, pad_right=True)))
+
+  return unigram, bigram, trigram, tokenized_text
+
+unigram, bigram, trigram, tokenized_text = get_Unigrams(sents)
   
 # remove the n-grams with removable words
 def filter_stopwords(x):     
