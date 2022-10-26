@@ -25,21 +25,27 @@ removal_list = getRemovalList()
 
 
 # generate unigrams bigrams trigrams
-unigram=[]
-bigram=[]
-trigram=[]
-tokenized_text=[]
-for sentence in sents:
-  sentence = list(map(lambda x:x.lower(),sentence))
-  for word in sentence:
-        if word== '.':
-            sentence.remove(word) 
-        else:
-            unigram.append(word)
+def get_Unigrams(sents):
+  unigram=[]
+  bigram=[]
+  trigram=[]
+  tokenized_text=[]
+  for sentence in sents:
+    sentence = list(map(lambda x:x.lower(),sentence))
     
-  tokenized_text.append(sentence)
-  bigram.extend(list(ngrams(sentence, 2,pad_left=True, pad_right=True)))
-  trigram.extend(list(ngrams(sentence, 3, pad_left=True, pad_right=True)))
+    for word in sentence:
+          if word== '.':
+              sentence.remove(word) 
+          else:
+              unigram.append(word)
+      
+    tokenized_text.append(sentence)
+    bigram.extend(list(ngrams(sentence, 2,pad_left=True, pad_right=True)))
+    trigram.extend(list(ngrams(sentence, 3, pad_left=True, pad_right=True)))
+
+  return unigram, bigram, trigram, tokenized_text
+
+unigram, bigram, trigram, tokenized_text = get_Unigrams(sents)
   
 # remove the n-grams with removable words
 def filter_stopwords(x):     
@@ -70,14 +76,18 @@ word2 = "said"
 s = word1 + ' ' + word2
 print(s)
 
+def get_prob(word1, word2, curr_word, freq_ui, freq_bi, freq_tri):
+  if(freq_bi[word1, word2]==0):
+    return 0
+  prob_val = freq_tri[word1, word2, curr_word]/freq_bi[word1, word2]
+  return prob_val
+
 def predict_next_word(word1, word2, s):
   for i in range(5):
       max_count = 0
       next_word = ""
       for curr_word in freq_ui:
-        if(freq_bi[word1,word2]==0):
-          continue
-        prob_val = freq_tri[word1, word2, curr_word]/freq_bi[word1, word2]
+        prob_val = get_prob(word1, word2, curr_word, freq_ui, freq_bi, freq_tri)
         if(prob_val > max_count):
           max_count = prob_val
           next_word = curr_word
