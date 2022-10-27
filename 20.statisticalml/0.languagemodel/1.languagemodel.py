@@ -20,8 +20,6 @@ def getRemovalList():
   string.punctuation = string.punctuation +'"'+'"'+'-'+'''+'''+'—'
   removal_list = list(stop_words) + list(string.punctuation)+ ['lt','rt']
   return(removal_list)
-  
-removal_list = getRemovalList()
 
 
 # generate unigrams bigrams trigrams
@@ -45,8 +43,6 @@ def get_Unigrams(sents):
 
   return unigram, bigram, trigram, tokenized_text
 
-unigram, bigram, trigram, tokenized_text = get_Unigrams(sents)
-  
 # remove the n-grams with removable words
 def filter_stopwords(x):     
     y = []
@@ -60,22 +56,7 @@ def filter_stopwords(x):
         if (count==1):
             y.append(pair)
     return (y)
-unigram = filter_stopwords(unigram)
-bigram = filter_stopwords(bigram)
-trigram = filter_stopwords(trigram)
-
-# generate frequency of n-grams 
-freq_ui = FreqDist(unigram)
-freq_bi = FreqDist(bigram)
-freq_tri = FreqDist(trigram)
-
-# Next word prediction      
-word1 = "he"
-word2 = "said"
-
-s = word1 + ' ' + word2
-print(s)
-
+  
 def get_prob(word1, word2, curr_word, freq_ui, freq_bi, freq_tri):
   if(freq_bi[word1, word2]==0):
     return 0
@@ -96,5 +77,25 @@ def predict_next_word(word1, word2, s):
       print(s)
       word1 = word2
       word2 = next_word
+  
+removal_list = getRemovalList()
+
+unigram, bigram, trigram, tokenized_text = get_Unigrams(sents)
+  
+unigram = filter_stopwords(unigram)
+bigram = filter_stopwords(bigram)
+trigram = filter_stopwords(trigram)
+
+# generate frequency of n-grams 
+freq_ui = FreqDist(unigram)
+freq_bi = FreqDist(bigram)
+freq_tri = FreqDist(trigram)
+
+# Next word prediction      
+word1 = "he"
+word2 = "said"
+
+s = word1 + ' ' + word2
+print(s)
 
 predict_next_word(word1, word2, s)
