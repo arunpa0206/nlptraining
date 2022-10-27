@@ -21,9 +21,7 @@ def getRemovalList():
   string.punctuation = string.punctuation +'"'+'"'+'-'+'''+'''+'—'
   removal_list = list(stop_words) + list(string.punctuation)+ ['lt','rt']
   return(removal_list)
-  
-removal_list = getRemovalList()
-  
+
 # generate unigrams bigrams trigrams
 def get_Unigrams(sents):
   unigram=[]
@@ -45,8 +43,6 @@ def get_Unigrams(sents):
 
   return unigram, bigram, trigram, tokenized_text
 
-unigram, bigram, trigram, tokenized_text = get_Unigrams(sents)
-  
 # remove the n-grams with removable words
 def filter_stopwords(x):     
     y = []
@@ -60,6 +56,11 @@ def filter_stopwords(x):
         if (count==1):
             y.append(pair)
     return (y)
+  
+removal_list = getRemovalList()
+
+unigram, bigram, trigram, tokenized_text = get_Unigrams(sents)
+  
 unigram = filter_stopwords(unigram)
 bigram = filter_stopwords(bigram)
 trigram = filter_stopwords(trigram)
