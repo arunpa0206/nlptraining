@@ -3,12 +3,6 @@
 
 from textprocessing import freq_ui, freq_bi, freq_tri
 
-word1 = "shyam"
-word2 = "likes"
-
-s = word1 + ' ' + word2
-print(s)
-
 def get_prob_by_applying_backoff_smoothing(word1, word2, curr_word, freq_ui, freq_bi, freq_tri):
   if(freq_ui[word2]==0):
     return 0
@@ -30,5 +24,11 @@ def predict_next_word(word1, word2, s):
       print(s)
       word1 = word2
       word2 = next_word
+
+word1 = "shyam"
+word2 = "likes"
+
+s = word1 + ' ' + word2
+print(s)
 
 predict_next_word(word1, word2, s)
