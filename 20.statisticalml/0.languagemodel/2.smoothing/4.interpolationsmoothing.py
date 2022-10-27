@@ -1,11 +1,7 @@
 # Next word prediction     
 # Interpolation Smoothing
 
-word1 = "Mukesh"
-word2 = "likes"
-
-s = word1 + ' ' + word2
-print(s)
+from textprocessing import freq_ui, freq_bi, freq_tri
 
 def get_prob_by_applying_interpolation_smoothing(word1, word2, curr_word, freq_ui, freq_bi, freq_tri):
   lambda1 = 1/3.0
@@ -38,5 +34,11 @@ def predict_next_word(word1, word2, s):
       print(s)
       word1 = word2
       word2 = next_word
+
+word1 = "Mukesh"
+word2 = "likes"
+
+s = word1 + ' ' + word2
+print(s)
 
 predict_next_word(word1, word2, s)
