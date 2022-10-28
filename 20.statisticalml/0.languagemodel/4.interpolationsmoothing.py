@@ -1,8 +1,12 @@
 # Next word prediction     
 # Interpolation Smoothing
 
-from textprocessing import freq_ui, freq_bi, freq_tri
+from pipeline import sents
+from textprocessing import text_processing
 
+freq_ui, freq_bi, freq_tri = text_processing(sents)
+
+#calculate probability using interpolation smoothing
 def get_prob_by_applying_interpolation_smoothing(word1, word2, curr_word, freq_ui, freq_bi, freq_tri):
   lambda1 = 1/3.0
   lambda2 = 1/3.0
@@ -18,6 +22,7 @@ def get_prob_by_applying_interpolation_smoothing(word1, word2, curr_word, freq_u
   prob_val = (lambda1 * (freq_ui[curr_word]/6)) + (lambda2 * (freq_bi[word2, curr_word]/freq_ui[word2])) + (lambda3 * (freq_tri[word1, word2, curr_word]/freq_bi[word1, word2])) 
   return prob_val
 
+#predicting next word
 def predict_next_word(word1, word2, s):
   for i in range(2):
       max_count = 0

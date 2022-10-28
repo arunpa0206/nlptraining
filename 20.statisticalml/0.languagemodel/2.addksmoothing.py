@@ -1,12 +1,17 @@
 # Next word prediction     
 # Add-k smoothing
 
-from textprocessing import freq_ui, freq_bi, freq_tri
+from pipeline import sents
+from textprocessing import text_processing
 
+freq_ui, freq_bi, freq_tri = text_processing(sents)
+
+#calculate probability using add-k smoothing
 def get_prob_by_applying_addk_smoothing(word1, word2, curr_word, freq_ui, freq_bi, freq_tri):
   prob_val = (freq_tri[word1, word2, curr_word]+0.5)/(freq_bi[word1, word2]+6)
   return prob_val
 
+#predicting next word
 def predict_next_word(word1, word2, s):
   for i in range(1):
       max_count = 0
