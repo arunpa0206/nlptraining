@@ -1,0 +1,8 @@
+tensorflow
+bayesian-optimization
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+keras
