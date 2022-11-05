@@ -8,5 +8,5 @@ input_txt = "Apple today announced second generation Iphone"
 output = NER(input_txt)
 
 for word in output.ents:
-    print(word.text +  " -> " + word.label_ + " | ", end =" ")
-#spaccy version 3.1.2 appears to give better results
+    print(word.text +  " -> " + word.label_)
+#spacy version 3.1.2 appears to give better results

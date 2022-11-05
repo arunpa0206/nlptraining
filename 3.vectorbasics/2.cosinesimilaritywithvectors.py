@@ -1,4 +1,4 @@
-import numpy
+import numpy as np
 
 # Function that takes two python lists as vectors and returns cosine-similarity:
 def CosineSimilarity(vec_1, vec_2):
@@ -9,7 +9,7 @@ def CosineSimilarity(vec_1, vec_2):
     print("Second-vector :  " + str(vB))
     print('-----------------------------------------------')
 
-    cos_sim = numpy.dot(vA, vB) / (numpy.sqrt(numpy.dot(vA,vA)) * numpy.sqrt(numpy.dot(vB,vB)))
+    cos_sim = np.dot(vA, vB) / (np.sqrt(np.dot(vA,vA)) * np.sqrt(np.dot(vB,vB)))
     return cos_sim
 
 

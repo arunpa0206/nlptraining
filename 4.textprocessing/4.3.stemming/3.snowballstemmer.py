@@ -1,10 +1,10 @@
 import nltk
 from nltk.stem.snowball import SnowballStemmer
-#Use uses snow ball stemmer which is a better variant of porter stemmer
+#Use snow ball stemmer which is a better variant of porter stemmer
 #Try words like 'fairly' and 'sportingly'
 snow_stemmer = SnowballStemmer(language='english')
 
-words = ['care', 'caring', 'cares', 'cared', 'cars']
+words = ['care', 'caring', 'cares', 'cared', 'cars', 'fairly', 'sportingly']
 stem_words = []
 
 for w in words:

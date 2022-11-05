@@ -40,5 +40,5 @@ def embedding_for_vocab(filepath, word_index,
   
 # matrix for vocab: word_index
 embedding_dim = 50
-embedding_matrix_vocab = embedding_for_vocab('../glove.6B.50d.txt', tokenizer.word_index, embedding_dim)
+embedding_matrix_vocab = embedding_for_vocab('./glove.6B.50d.txt', tokenizer.word_index, embedding_dim)
 print("Dense vector for first word is => ",embedding_matrix_vocab[1])

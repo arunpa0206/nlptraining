@@ -4,4 +4,4 @@ nlp = spacy.load('en_core_web_sm')
 doc = nlp('care caring cares cared cars')
  
 for token in doc:
-    print(token.text + " -> " + token.lemma_ + " | ", end = " " )
+    print(token.text + " -> " + token.lemma_)
