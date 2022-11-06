@@ -44,7 +44,18 @@ embedding_matrix_vocab = embedding_for_vocab('./glove.6B.50d.txt', tokenizer.wor
 print("Dense vector for first word is => ",embedding_matrix_vocab[1])
 
 
-#######################################################
+
+#####################################################################################################
+# Since (idx == 0) was dummy point in the embedding_vocab_matrix, we will remove it while plotting.
+embedding_matrix_vocab = embedding_matrix_vocab[1:]
+# Now we are generating word-list for labelling points in the graph:
+word_list = []
+index_to_word = {}
+for key, value in tokenizer.word_index.items():
+    index_to_word[value] = key
+for i in range(1 , len(index_to_word) + 1):
+    word_list.append(index_to_word[i])
+#####################################################################################################
 # Now using PCA to reduce dimensionality to 2, for plotting the points:
 from sklearn.decomposition import PCA
 from matplotlib import pyplot
@@ -55,8 +66,7 @@ result = pca.fit_transform(X)
 
 # create a scatter plot of the projection
 pyplot.scatter(result[:, 0], result[:, 1])
-words = list(model.wv.index_to_key)
+words = word_list
 for i, word in enumerate(words):
 	pyplot.annotate(word, xy=(result[i, 0], result[i, 1]))
 pyplot.show()
-# One point in the graph is dummy-point(Which is represented by idx->0 in embedding vocab)
