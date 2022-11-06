@@ -65,9 +65,7 @@ def filter_stopwords(ngrams, removal_list):
 
         # iterate over each ngram
         for word in ngram:
-            if word in removal_list:
-                count = count
-            else:
+            if word not in removal_list:
                 count = 1
         if (count==1):
             filtered_ngrams.append(ngram)
