@@ -1,25 +1,17 @@
-from spacy.lang.en import English
-from spacy.lang.en.stop_words import STOP_WORDS
-#Create an English language centric nlp object
-nlp = English()
-
-text = "Please give me your hand. I need to check it for any injuries."
-
-my_doc = nlp(text)
-print(my_doc)
-
-token_list = []
-for token in my_doc:
-    token_list.append(token.text)
-    
-filtered_sentence =[] 
-
-for word in token_list:
-    lexeme = nlp.vocab[word]
-    # lexeme is a concept that can be represented by multiple words 
-    if lexeme.is_stop == False:
-        filtered_sentence.append(word) 
-print("input sentence tokens:")        
-print(token_list) # Breaking in half for better visibility.
-print("filtered tokens:")
-print(filtered_sentence)  
+#importing delauft stopwords from nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+  
+input_txt = "Please give me your hand. I need to check it for any injuries."
+#importing stop words of english that need to be filtered. We can also extend this list with our own list 
+stop_words = set(stopwords.words('english'))
+#Tokenize the input text
+word_tokens = word_tokenize(input_txt)
+#filter the stop words from the word tokens
+output_txt = [w for w in word_tokens if not w.lower() in stop_words]
+#print the tokenized input tokens 
+print("Tokenized sentence:")
+print(word_tokens)
+#print the filtered tokens
+print("Filtered Sentence:")
+print(output_txt)
