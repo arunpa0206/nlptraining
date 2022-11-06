@@ -42,3 +42,21 @@ def embedding_for_vocab(filepath, word_index,
 embedding_dim = 50
 embedding_matrix_vocab = embedding_for_vocab('./glove.6B.50d.txt', tokenizer.word_index, embedding_dim)
 print("Dense vector for first word is => ",embedding_matrix_vocab[1])
+
+
+#######################################################
+# Now using PCA to reduce dimensionality to 2, for plotting the points:
+from sklearn.decomposition import PCA
+from matplotlib import pyplot
+
+X = embedding_matrix_vocab
+pca = PCA(n_components=2)
+result = pca.fit_transform(X)
+
+# create a scatter plot of the projection
+pyplot.scatter(result[:, 0], result[:, 1])
+words = list(model.wv.index_to_key)
+for i, word in enumerate(words):
+	pyplot.annotate(word, xy=(result[i, 0], result[i, 1]))
+pyplot.show()
+# One point in the graph is dummy-point(Which is represented by idx->0 in embedding vocab)
