@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 import os
@@ -9,33 +9,29 @@ import sagemaker
 from sagemaker import get_execution_role
 import tensorflow as tf
 from tensorflow import keras
-
-
-# In[2]:
-
-
 import numpy as np
 import matplotlib.pyplot as plt
+
+
+# In[7]:
+
+
+# consider X as height of a person in metres.
 train_data_X = np.linspace(-1, 1, 100)
-
-
-# In[3]:
-
-
-# y = 4 * x + random values
+# consider Y as weight of a person in kg calulated by taking ideal BMI
 train_data_Y = 4 * train_data_X + np.random.randn(100) * 0.44
 
 
-# In[4]:
+# In[8]:
 
 
-train_data_X
+print(train_data_X)
 
 
-# In[5]:
+# In[9]:
 
 
-train_data_Y
+print(train_data_Y)
 
 
 # In[6]:
@@ -44,7 +40,7 @@ train_data_Y
 plt.scatter(train_data_X, train_data_Y, label='data', color=['blue'])
 
 
-# In[7]:
+# In[10]:
 
 
 from keras.models import Sequential
@@ -52,25 +48,32 @@ from keras.layers import Dense
 model = Sequential()
 
 
-# In[8]:
+# In[11]:
 
 
 model.add(Dense(kernel_initializer="uniform", activation="linear", input_dim=1, units=1))
 
 
-# In[9]:
+# In[12]:
 
 
 model.summary()
 
 
-# In[10]:
+# In[14]:
 
 
 result = model.predict(train_data_X)
 
 
-# In[11]:
+# In[13]:
+
+
+model.compile(optimizer='sgd', loss='mse')
+model.fit(train_data_X, train_data_Y, epochs=2500, batch_size=10)
+
+
+# In[15]:
 
 
 plt.scatter(train_data_X, train_data_Y, label='data', color=['red'])
@@ -79,20 +82,13 @@ plt.legend()
 plt.show()
 
 
-# In[12]:
-
-
-model.compile(optimizer='sgd', loss='mse')
-model.fit(train_data_X, train_data_Y, epochs=5, batch_size=10)
-
-
-# In[14]:
+# In[16]:
 
 
 model.save('model.h5')
 
 
-# In[16]:
+# In[17]:
 
 
 import sagemaker
