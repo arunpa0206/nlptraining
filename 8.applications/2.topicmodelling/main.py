@@ -30,6 +30,6 @@ print("Elbow Value -> " + str(elbow_val))
 km, y = _4_clusteriseAndGetTopics.makeKClusters(elbow_val , X)
 closest_overall_output_words , words_by_cluster_no , final_list_of_used_words , X , list_all_words = _4_clusteriseAndGetTopics.getTopNounsFromEachCluster(km , data , X  , lematized_list_cpy , num_of_clusters = elbow_val)
 topic_words , words_by_cluster_no, words_by_cluster_no_with_distances = _4_clusteriseAndGetTopics.mergeNounsFromEachCluster(words_by_cluster_no , list_all_words)
-print("Topics Obtained : \n" + str(topic_words))
+print("Topics Obtained : \n" + str(set(topic_words)))
 
 #########################################################################################

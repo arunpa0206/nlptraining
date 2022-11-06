@@ -41,21 +41,29 @@ def embedding_for_vocab(filepath, word_index,
 # matrix for vocab: word_index
 embedding_dim = 50
 embedding_matrix_vocab = embedding_for_vocab('./glove.6B.50d.txt', tokenizer.word_index, embedding_dim)
-print("Dense vector for first word is => ",embedding_matrix_vocab[1])
+print("Embedding vector for first word is => ",embedding_matrix_vocab[1])
 
 
 
 #####################################################################################################
-# Since (idx == 0) was dummy point in the embedding_vocab_matrix, we will remove it while plotting.
-embedding_matrix_vocab = embedding_matrix_vocab[1:]
-# Now we are generating word-list for labelling points in the graph:
-word_list = []
-index_to_word = {}
-for key, value in tokenizer.word_index.items():
-    index_to_word[value] = key
-for i in range(1 , len(index_to_word) + 1):
-    word_list.append(index_to_word[i])
+def getEmbeddingVectorsForPlotting(embedding_matrix_vocab):
+    # Since (idx == 0) was dummy point in the embedding_vocab_matrix, we will remove it while plotting.
+    return embedding_matrix_vocab[1:]
+
+def wordListForPlotting(word_dict):   
+    # Now we are generating word-list for labelling points in the graph:
+    word_list = []
+    index_to_word = {}
+    for key, value in word_dict.items():
+        index_to_word[value] = key
+    for i in range(1 , len(index_to_word) + 1):
+        word_list.append(index_to_word[i])
+
+    return word_list   
 #####################################################################################################
+embedding_matrix_vocab = getEmbeddingVectorsForPlotting(embedding_matrix_vocab)
+word_list = wordListForPlotting(tokenizer.word_index)
+
 # Now using PCA to reduce dimensionality to 2, for plotting the points:
 from sklearn.decomposition import PCA
 from matplotlib import pyplot

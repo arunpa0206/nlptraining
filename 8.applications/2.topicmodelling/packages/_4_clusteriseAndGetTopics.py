@@ -44,7 +44,7 @@ def getTopNounsFromEachCluster(km , final_list_of_used_words , X , lematized_lis
     
     words_by_cluster_no = [[] , [] , [] , [] , [] , [] , [] , [] , [] , [] , [] , [] , [] , [] , [] , [] , [] , [] , [] , [] , []] 
     
-    total_iterations = min((100 / num_of_clusters) , ((len(final_list_of_used_words) / num_of_clusters) -1)) 
+    total_iterations = min((10 / num_of_clusters) , ((len(final_list_of_used_words) / num_of_clusters) -1)) 
     
     str_to_store_cluster_idx_and_distance = ""
 
