@@ -12,6 +12,8 @@ print(vocab)
 
 from keras_preprocessing import sequence
 max_words = 500
+# In order to feed data in RNN, all input-docs must have the same length. We limit the max
+# review length to max_words by truncating longer reviews and padding shorter reviews with '0's at the end.
 train_x = sequence.pad_sequences(train_x, maxlen = max_words)
 test_x = sequence.pad_sequences(test_x, maxlen = max_words)
 
@@ -20,6 +22,8 @@ model = Sequential()
 model.add(Embedding(1000, embedding_size, input_length=(max_words)))
 model.add(SimpleRNN(100, return_sequences='true'))
 model.add(SimpleRNN(50, return_sequences='true'))
+# when the return_sequences is set to true, the prev timesteps of the rnn input produces an output
+# that can be consumed by full-connected layer.
 model.add(SimpleRNN(25))
 model.add(Dense(1, activation='sigmoid'))
 print(model.summary())
