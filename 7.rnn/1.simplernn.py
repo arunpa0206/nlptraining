@@ -31,5 +31,5 @@ print(model.summary())
 model.compile(optimizer = 'rmsprop', loss = 'binary_crossentropy', metrics  =['acc'])
 history = model.fit(train_x, train_y, epochs=10, batch_size=120, validation_split=0.2)
 
-prediction = model.predict(test_x)
+prediction = model.predict(test_x[0].reshape(1,500))
 print(prediction)

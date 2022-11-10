@@ -53,7 +53,7 @@ def data():
     
     return X_train, X_val, y_train, y_val
     
-    def create_model(X_train, y_train, X_val, y_val):
+def create_model(X_train, y_train, X_val, y_val):
     #create embedded vecttor length of 32 
     embedding_vector_length = 32
     model = Sequential()
@@ -90,11 +90,10 @@ def data():
     print('Test accuracy:', acc)
     return {'loss': -acc, 'status': STATUS_OK, 'model': model}
     
-    X_train, y_train, X_val, y_val = data() 
+X_train, y_train, X_val, y_val = data() 
 best_run, best_model = optim.minimize(model=create_model,
                                           data=data,
                                           algo=tpe.suggest,
                                           max_evals=5,
-                                          trials=Trials(),
-                                          notebook_name='Untitled5'
+                                          trials=Trials()
                                           )
