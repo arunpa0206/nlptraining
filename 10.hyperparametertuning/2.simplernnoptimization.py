@@ -43,7 +43,7 @@ def create_model(x_train, y_train, x_val, y_val):
     model.add(SimpleRNN({{choice([25,50])}}, return_sequences='true'))
     # when the return_sequences is set to true, the prev timesteps of the rnn input produces an output
     # that can be consumed by full-connected layer.
-    model.add(SimpleRNN(25))
+    model.add(SimpleRNN({{choice([25,50])}}))
     model.add(Dense(1, activation='sigmoid'))
     print(model.summary())
     
@@ -65,7 +65,7 @@ def create_model(x_train, y_train, x_val, y_val):
     print(model.summary())
     
     #get accuracy for 5 epochs with batch size of32
-    history = model.fit(x_train, y_train,validation_split=0.2, epochs=10, batch_size=120, verbose=1)
+    history = model.fit(x_train, y_train,validation_split={{choice([0.2,0.3])}}, epochs={{choice([5,10])}}, batch_size={{choice([60,120])}}, verbose=1)
     
     score, acc = model.evaluate(x_val, y_val, verbose=1)
     print('Test accuracy:', acc)
@@ -77,6 +77,6 @@ x_train, y_train, x_val, y_val = data()
 best_run, best_model = optim.minimize(model=create_model,
                                           data=data,
                                           algo=tpe.suggest,
-                                          max_evals=5,
+                                          max_evals=2,
                                           trials=Trials()
                                           )
