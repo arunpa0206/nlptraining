@@ -1,5 +1,5 @@
 # Importing Functions from helper files:
-from packages import _1_preprocessing, _2_generateWordEmbedding, _3_elbow, _4_clusteriseAndGetTopics
+from packages import preprocessing, generateWordEmbedding, elbow, clusteriseAndGetTopics
 
 ##########################################################################################
 # Data Preprocessing:
