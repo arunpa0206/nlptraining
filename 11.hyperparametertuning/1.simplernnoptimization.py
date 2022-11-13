@@ -39,8 +39,8 @@ def create_model(x_train, y_train, x_val, y_val):
     embedding_size = 32
     model = Sequential()
     model.add(Embedding(1000, embedding_size, input_length=(max_words)))
-    model.add(SimpleRNN({{choice([50,100])}}, return_sequences='true'))
-    model.add(SimpleRNN({{choice([25,50])}}, return_sequences='true'))
+    model.add(SimpleRNN({{choice([50,100])}}, {{choice(['true', 'false'])}})) # return_sequences='true'
+    model.add(SimpleRNN({{choice([25,50])}}, {{choice(['true', 'false'])}})) # return_sequences='true'
     # when the return_sequences is set to true, the prev timesteps of the rnn input produces an output
     # that can be consumed by full-connected layer.
     model.add(SimpleRNN({{choice([25,50])}}))
