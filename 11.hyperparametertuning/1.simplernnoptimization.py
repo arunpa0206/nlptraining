@@ -80,3 +80,4 @@ best_run, best_model = optim.minimize(model=create_model,
                                           max_evals=2,
                                           trials=Trials()
                                           )
+print(best_run)
