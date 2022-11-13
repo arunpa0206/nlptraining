@@ -7,6 +7,7 @@ import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 nltk.download('punkt')
+nltk.download('omw-1.4')
 from nltk.stem import WordNetLemmatizer 
 nltk.download('wordnet')
 import pandas as pd
