@@ -8,7 +8,7 @@
     git clone https://github.com/arunpa0206/nlptraining.git
     
     python -m venv nlp  
-    # run the activate file
+    ## Run the activate file
     nlp\Scripts\activate  
     cd nlptraining  
     pip install -r requirements.txt
