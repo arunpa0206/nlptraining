@@ -1,18 +1,26 @@
-pip install rasa
+Step 1 : Install RASA
 
-to check rasa is installed
-rasa -h
+`pip install rasa`
 
-rasa init
+Step 2: To check RASA is installed
 
-to start chatting with the bot
-rasa shell
+`rasa -h`
 
+Step 3: Initialise RASA Chatbot
 
-in case you make modification in the rasa training data and code
-rasa train
-rasa test
-rasa shell
+`rasa init`
 
-to run action server
-rasa run actions
+Step 4: To start chatting with the bot
+
+`rasa shell`
+
+Step 5: In case you make modification in the rasa training data and code
+
+`rasa train`
+`rasa test`
+`rasa shell`
+
+Step 6: To run Action Server
+
+`rasa run actions`
+
