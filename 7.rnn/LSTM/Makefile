@@ -1,4 +1,6 @@
 dep-lstm:
+	pip install numpy
+	pip insall scikit-learn
 	pip install tensorflow
 	pip install keras_preprocessing
 
