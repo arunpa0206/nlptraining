@@ -1,3 +1,5 @@
 ./nlp/
 /9.applications/3.summarization/reviews.csv
 /6.embeddingModels/glove.6B.50d.txt
+7.rnn/IMDB Dataset.csv
+7.rnn/Bi_LSTM/train.csv
