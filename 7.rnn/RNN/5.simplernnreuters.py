@@ -6,7 +6,7 @@ from keras.layers import Embedding, SimpleRNN
 from keras.layers import Dense
 
 from keras.datasets import reuters
-from keras.preprocessing import sequence
+from keras_preprocessing import sequence
 
 max_features = 10000  # number of words to consider as features
 maxlen = 500  # cut texts after this number of words (among top max_features most common words)

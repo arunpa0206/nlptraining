@@ -31,9 +31,12 @@ y_train = np.array(y_train)
 y_test = np.array(y_test)
 
 model = Sequential()
+#input dim = max features
+#output dim = 128
 model.add(Embedding(max_features, 128, input_length=maxlen))
 # reduce the 128  dimension embedding vectors to 64 dimension vector
 model.add(LSTM(64))
+#fraction of the input units to drop = 0.5
 model.add(Dropout(0.5))
 model.add(Dense(1, activation='sigmoid'))
 

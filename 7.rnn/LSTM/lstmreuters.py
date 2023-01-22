@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn.metrics import accuracy_score
 from keras.datasets import reuters
-from keras.preprocessing.sequence import pad_sequences
+from keras_preprocessing.sequence import pad_sequences
 from tensorflow.keras.utils import to_categorical
 from keras.models import Sequential
 from keras.layers import Dense, LSTM, Activation
