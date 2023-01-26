@@ -27,41 +27,27 @@ Step 6: Install MySQL in Windows
 Go over this link to download MySQL Installer - https://dev.mysql.com/downloads/installer/
 Run the installer by keeping default settings.
 
-Step 7: Open Commnad Prompt or Powershell or can search for MySQL Client from Windows Search bar
+Step 7. Create the Database
 
-`mysql -u root`
+`create database telecom;`
 
-Step 8: After logging into MySQL Server without password, we have to set the password
+Step 8. Use telecom Database
 
-`ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';`
+`use telecom;`
 
-Step 9: Now, you will be able to use your new password to log in to MySQL server
+Step 9. Create table test in telecom Database
 
-`mysql -u root -p`
+CREATE TABLE `test` ( `id` int NOT NULL, `month_name` varchar(255) NOT NULL, `activity` varchar(255) DEFAULT NULL, PRIMARY KEY (`id`));
 
-And type the password.
-
-Step 10. Create the Database
-
-`create database telecom`
-
-Step 11. Use telecom Database
-
-`use telecom`
-
-Step 12. Create table test in telecom Database
-
-CREATE TABLE `test` ( `id` int NOT NULL, `month_name` varchar(255) NOT NULL, `activity` varchar(255) DEFAULT NULL, PRIMARY KEY (`id`))
-
-Step 13. Insert one value in the table.
+Step 10. Insert one value in the table.
 
 INSERT INTO `telecom`.`test` (`id`, `month_name`, `activity`) VALUES ("1", "January", "high usage");
 
-Step 14. Exit the MySQL server
+Step 11. Exit the MySQL server
 
 `exit`
 
-Step 15: To run Action Server
+Step 12: To run Action Server
 
 `rasa run actions`
 
