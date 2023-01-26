@@ -10,15 +10,13 @@ Step 3: Initialise RASA Chatbot (if you have cloned the repository and running e
 
 `rasa init`
 
-Step 4: To start chatting with the bot
-
-`rasa shell`
-
-Step 5: In case you make modification in the rasa training data and code
+Step 4: In case you make modification in the rasa training data and code
 
 `rasa train`
 
 `rasa test` (optional)
+
+Step 5: To start chatting with the bot
 
 `rasa shell`
 
