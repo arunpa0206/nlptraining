@@ -1,3 +1,6 @@
+OpenAI - https://openai.com/
+
+
 Step 1. Create the training data
 
 GPT-3 expects your finetune dataset to be in a specific JSONL file format, which looks like this -
