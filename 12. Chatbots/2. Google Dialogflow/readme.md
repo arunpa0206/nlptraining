@@ -1,4 +1,5 @@
-Google Dialogflow Link - https://dialogflow.com/
+Google Console Link - console.cloud.google.com
+Google Dialogflow Link - dialogflow.cloud.google.com
 
 Step 1. Sign up with your google account
 ![image](https://user-images.githubusercontent.com/60811564/213868902-90193b79-3c7b-4f6a-87bd-81f37d216349.png)
