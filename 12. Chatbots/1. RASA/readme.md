@@ -17,7 +17,9 @@ Step 4: To start chatting with the bot
 Step 5: In case you make modification in the rasa training data and code
 
 `rasa train`
+
 `rasa test` (optional)
+
 `rasa shell`
 
 Step 6: Install MySQL in Windows
