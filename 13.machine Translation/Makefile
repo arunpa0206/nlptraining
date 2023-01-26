@@ -1,5 +1,8 @@
 dep:
 	pip install transformers
 
-run:	
-	python 1.eng_to_german.py
+run_translation:	
+	python Machine_Translation.py
+	
+run_summarization:	
+	python Text_Summarization.py	
