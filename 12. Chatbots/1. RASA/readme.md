@@ -31,7 +31,7 @@ Step 7: Open Commnad Prompt or Powershell or can search for MySQL Client from Wi
 
 Step 8: After logging into MySQL Server without password, we have to set the password
 
-`ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';
+`ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';`
 
 Step 9: Now, you will be able to use your new password to log in to MySQL server
 
