@@ -1,5 +1,7 @@
 OpenAI - https://openai.com/
 
+GPT-3 DEMO - https://drive.google.com/file/d/1NL9rWVsnK1vRWYRN1BI8P04LYMlwSAK2/view?usp=sharing
+
 
 Step 1. Create the training data
 
