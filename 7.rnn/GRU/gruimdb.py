@@ -26,6 +26,8 @@ maxlen = 300
 X_train = pad_sequences(X_train, maxlen = maxlen, padding = 'post')
 X_test = pad_sequences(X_test, maxlen = maxlen, padding = 'post')
 
+
+# just converting the 2d shape of the input to the 3d shape
 X_train = X_train.reshape(X_train.shape + (1,))
 X_test = X_test.reshape(X_test.shape + (1,))
 
